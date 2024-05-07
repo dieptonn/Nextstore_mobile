@@ -1,11 +1,22 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+
+import { View, Text, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import search from '../assets/images/search.png';
 import category from '../assets/images/category.png';
 
 
+
 const HomeScreen = () => {
+
+    const navigation = useNavigation();
+    // const [selectedIcon, setSelectedIcon] = useState('home');
+
+    const navigateToProduct = () => {
+        navigation.navigate('Product');
+        // setSelectedIcon('product');
+    };
     return (
         <View style={styles.container}>
             <Text style={styles.name}>nextstore</Text>
@@ -19,12 +30,12 @@ const HomeScreen = () => {
                 />
             </View>
             <ScrollView style={styles.scrollContent}>
-                <View style={styles.categories}>
+                <TouchableOpacity style={styles.categories} onPress={navigateToProduct}>
                     <View style={styles.categoryName}>
                         <Text style={styles.categoryTxt}>Kitchen</Text>
                     </View>
                     <Image source={category} style={styles.categoryImg}></Image>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.categories}>
                     <View style={styles.categoryName}>
                         <Text style={styles.categoryTxt}>Bedroom</Text>

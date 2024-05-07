@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import home from '../assets/images/home.png';
 import bag from '../assets/images/bag.png';
 import heart from '../assets/images/heart.png';
 import user from '../assets/images/user.png';
 
-const Footer = () => {
+const Footer = ({ showFooter }) => {
     const navigation = useNavigation();
+    // const route = useRoute();
     const [selectedIcon, setSelectedIcon] = useState('home');
 
     const navigateToHome = () => {
@@ -28,6 +29,14 @@ const Footer = () => {
         navigation.navigate('User');
         setSelectedIcon('user');
     };
+
+    // if (route.name === 'Product') {
+    //     return null;
+    // }
+
+    // if (!showFooter) {
+    //     return null;
+    // }
 
     return (
         <View style={styles.container}>
@@ -60,7 +69,7 @@ const Footer = () => {
                 onPress={navigateToUser}
             >
                 <Image
-                    source={bag}
+                    source={user}
                     style={[styles.img, selectedIcon === 'user' && styles.selectedIcon]}
                 />
             </TouchableOpacity>
@@ -78,7 +87,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: '#F5F5F5'
+        backgroundColor: 'rgba(255, 255, 255, 0.90)'
     },
     div: {
         width: '25%',

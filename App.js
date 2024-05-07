@@ -6,6 +6,8 @@ import HomeScreen from './src/screens/home';
 import CartScreen from './src/screens/cart';
 import SaveScreen from './src/screens/save';
 import UserScreen from './src/screens/user';
+import ProductScreen from './src/screens/product';
+
 
 import Footer from './src/components/footer';
 import { SafeAreaView } from 'react-native';
@@ -20,14 +22,25 @@ const App = () => {
     setIsLoaded(true);
   }, []);
 
+  const onNavigationStateChange = (currentState) => {
+    // Nếu đang ở màn hình ProductScreen hoặc LoadingScreen, đặt isLoaded thành false
+    const currentRoute = currentState.routes[currentState.index].name;
+    if (currentRoute === 'Product' || currentRoute === 'Loading') {
+      setIsLoaded(false);
+    } else {
+      setIsLoaded(true);
+    }
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer onStateChange={onNavigationStateChange}>
       <Stack.Navigator initialRouteName="Loading">
         <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Cart" component={CartScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Save" component={SaveScreen} options={{ headerShown: false }} />
         <Stack.Screen name="User" component={UserScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Product" component={ProductScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
       {isLoaded && <Footer />}
     </NavigationContainer>
