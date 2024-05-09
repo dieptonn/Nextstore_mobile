@@ -17,6 +17,10 @@ const ProductScreen = () => {
         navigation.goBack(); // Gọi phương thức goBack() để quay lại trang trước đó
     };
 
+    const navigateToReview = () => {
+        navigation.navigate('Review');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.head}>
@@ -63,10 +67,10 @@ const ProductScreen = () => {
                         <Text style={styles.infoTxt}>Product information</Text>
                         <Image style={styles.infoImg} source={rArrow} />
                     </View>
-                    <View style={styles.infoDiv}>
+                    <TouchableOpacity style={styles.infoDiv} onPress={navigateToReview}>
                         <Text style={styles.infoTxt}>Reviews</Text>
                         <Text style={styles.infoNum}>32</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.space}>
 

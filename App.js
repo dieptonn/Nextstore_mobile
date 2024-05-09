@@ -7,6 +7,8 @@ import CartScreen from './src/screens/cart';
 import SaveScreen from './src/screens/save';
 import UserScreen from './src/screens/user';
 import ProductScreen from './src/screens/product';
+import ReviewScreen from './src/screens/reviews';
+
 
 
 import Footer from './src/components/footer';
@@ -25,7 +27,11 @@ const App = () => {
   const onNavigationStateChange = (currentState) => {
     // Nếu đang ở màn hình ProductScreen hoặc LoadingScreen, đặt isLoaded thành false
     const currentRoute = currentState.routes[currentState.index].name;
-    if (currentRoute === 'Product' || currentRoute === 'Loading') {
+    if (currentRoute === 'Product') {
+      setIsLoaded(false);
+    } else if (currentRoute === 'Review') {
+      setIsLoaded(false);
+    } else if (currentRoute === 'Loading') {
       setIsLoaded(false);
     } else {
       setIsLoaded(true);
@@ -41,6 +47,7 @@ const App = () => {
         <Stack.Screen name="Save" component={SaveScreen} options={{ headerShown: false }} />
         <Stack.Screen name="User" component={UserScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Product" component={ProductScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Review" component={ReviewScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
       {isLoaded && <Footer />}
     </NavigationContainer>
