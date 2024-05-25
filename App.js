@@ -8,6 +8,7 @@ import SaveScreen from './src/screens/save';
 import UserScreen from './src/screens/user';
 import ProductScreen from './src/screens/product';
 import ReviewScreen from './src/screens/reviews';
+import NewReviewScreen from './src/screens/newReview';
 
 
 
@@ -29,7 +30,7 @@ const App = () => {
     const currentRoute = currentState.routes[currentState.index].name;
     if (currentRoute === 'Product') {
       setIsLoaded(false);
-    } else if (currentRoute === 'Review') {
+    } else if (currentRoute === 'Review' || currentRoute === 'NewReview') {
       setIsLoaded(false);
     } else if (currentRoute === 'Loading') {
       setIsLoaded(false);
@@ -48,6 +49,7 @@ const App = () => {
         <Stack.Screen name="User" component={UserScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Product" component={ProductScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Review" component={ReviewScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="NewReview" component={NewReviewScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
       {isLoaded && <Footer />}
     </NavigationContainer>

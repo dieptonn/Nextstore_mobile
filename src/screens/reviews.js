@@ -23,6 +23,10 @@ const ReviewScreen = () => {
         navigation.goBack(); // Gọi phương thức goBack() để quay lại trang trước đó
     };
 
+    const navigateToNewReview = () => {
+        navigation.navigate('NewReview');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.naviBar}>
@@ -32,9 +36,11 @@ const ReviewScreen = () => {
                 <Text style={styles.tit}>
                     Reviews
                 </Text>
-                <Text style={styles.new}>
-                    New review
-                </Text>
+                <TouchableOpacity onPress={navigateToNewReview}>
+                    <Text style={styles.new}>
+                        New review
+                    </Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.search}>
                 <Image source={search} style={styles.searchLg}></Image>
