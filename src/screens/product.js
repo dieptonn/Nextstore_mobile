@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import product from '../assets/images/product.png';
 import brown from '../assets/images/brown.png';
 import black from '../assets/images/black.png';
 import back from '../assets/images/back.png';
 import like from '../assets/images/like.png';
+import close from '../assets/images/close.png';
+
 import rArrow from '../assets/images/rArrow.png';
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -20,6 +23,21 @@ const ProductScreen = () => {
     const navigateToReview = () => {
         navigation.navigate('Review');
     };
+
+
+    const [showBottomSheet, setShowBottomSheet] = useState(false);
+
+    const handleSheetChanges = useCallback((index) => {
+        if (index === -1) {
+            // BottomSheet đã đóng
+            setShowBottomSheet(false);
+        }
+    }, []);
+
+    const handleCLose = () => {
+        console.log('Closed')
+        setShowBottomSheet(false);
+    }
 
     return (
         <View style={styles.container}>
@@ -63,10 +81,13 @@ const ProductScreen = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.info}>
-                    <View style={styles.infoDiv}>
+                    <TouchableOpacity
+                        style={styles.infoDiv}
+                        onPress={() => setShowBottomSheet(true)}
+                    >
                         <Text style={styles.infoTxt}>Product information</Text>
                         <Image style={styles.infoImg} source={rArrow} />
-                    </View>
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.infoDiv} onPress={navigateToReview}>
                         <Text style={styles.infoTxt}>Reviews</Text>
                         <Text style={styles.infoNum}>32</Text>
@@ -76,6 +97,37 @@ const ProductScreen = () => {
 
                 </View>
             </ScrollView >
+            {showBottomSheet && (
+                <BottomSheet
+                    style={styles.bottomSheet}
+                    enablePanDownToClose
+                    snapPoints={['80%']}
+                    onChange={handleSheetChanges}
+                >
+                    <BottomSheetView style={styles.contentContainer}>
+                        <View style={styles.closeDiv}>
+                            <TouchableOpacity onPress={handleCLose}>
+                                <Image
+                                    source={close}
+                                    style={styles.close}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={styles.ProTit}>Product information</Text>
+                        <View style={styles.introDiv}>
+                            <Text style={styles.intro}>introductions</Text>
+                            <Text >Welcome to a world of unparalleled entertainment with Sony TV, where cutting-edge technology meets elegant design. Sony has long been a leader in the television industry, renowned for delivering exceptional picture quality, vibrant colors, and immersive sound.
+
+                                Our latest models are equipped with 4K HDR resolution, bringing your favorite movies, shows, and games to life with stunning detail and clarity. The advanced X1 Ultimate processor enhances every scene, ensuring you see the finest textures and natural colors, even in the darkest or brightest settings.</Text>
+
+                            <Text style={styles.intro}>details config</Text>
+                            <Text >Bought this table 2 months ago and I wanted to say, this is the best bedside table I’ve ever used 😍</Text>
+                            <Text >Bought this table 2 months ago and I wanted to say, this is the best bedside table I’ve ever used 😍</Text>
+                            <Text >Bought this table 2 months ago and I wanted to say, this is the best bedside table I’ve ever used 😍</Text>
+                        </View>
+                    </BottomSheetView>
+                </BottomSheet>
+            )}
         </View >
     );
 };
@@ -218,6 +270,38 @@ const styles = StyleSheet.create({
     },
     space: {
         height: 100
+    },
+    contentContainer: {
+        flex: 1,
+        alignItems: 'center',
+        paddingVertical: 0,
+        paddingHorizontal: 16,
+        gap: 24
+    },
+    ProTit: {
+        color: '#FF8C00',
+        fontFamily: 'notoserif',
+        fontSize: 32,
+        fontWeight: 'bold',
+    },
+    introDiv: {
+        width: '100%',
+        gap: 10
+    },
+    intro: {
+        color: '#212121',
+        fontFamily: 'notoserif',
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    closeDiv: {
+        alignItems: 'flex-start',
+        width: '100%',
+        // marginBottom: 15
+    },
+    close: {
+        width: 24,
+        height: 24
     }
 
 });
