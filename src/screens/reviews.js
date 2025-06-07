@@ -6,7 +6,7 @@ import search from '../assets/images/search.png';
 import star from '../assets/images/star.png';
 import notstar from '../assets/images/notstar.png';
 import ava1 from '../assets/images/ava1.png';
-import cmtImg1 from '../assets/images/cmtImg1.png';
+import cmtImg1 from '../assets/images/tv1.png';
 import cmtImg2 from '../assets/images/cmtImg2.png';
 import cmtImg3 from '../assets/images/cmtImg3.png';
 
@@ -115,7 +115,7 @@ const ReviewScreen = () => {
                         <Image source={ava1} style={styles.ava}></Image>
                         <Text style={styles.tit}>Paityn Saris</Text>
                     </View>
-                    <Text style={styles.time}>Bought this table 2 months ago and I{'\n'}wanted to say, this is the best bedside {'\n'}table I’ve ever used 😍</Text>
+                    <Text style={styles.time}>Bought this TV 2 months ago and I wanted to say, this is the best TV I’ve ever used 😍</Text>
 
                 </View>
 
@@ -183,7 +183,7 @@ const ReviewScreen = () => {
                         <Image source={ava1} style={styles.ava}></Image>
                         <Text style={styles.tit}>Paityn Saris</Text>
                     </View>
-                    <Text style={styles.time}>Bought this table 2 months ago and I{'\n'}wanted to say, this is the best bedside {'\n'}table I’ve ever used 😍</Text>
+                    <Text style={styles.time}>Bought this TV 2 months ago and I wanted to say, this is the best TV I’ve ever used 😍</Text>
 
                 </View>
 
@@ -250,7 +250,7 @@ const ReviewScreen = () => {
                         <Image source={ava1} style={styles.ava}></Image>
                         <Text style={styles.tit}>Paityn Saris</Text>
                     </View>
-                    <Text style={styles.time}>Bought this table 2 months ago and I{'\n'}wanted to say, this is the best bedside {'\n'}table I’ve ever used 😍</Text>
+                    <Text style={styles.time}>Bought this TV 2 months ago and I wanted to say, this is the best TV I’ve ever used 😍</Text>
 
                 </View>
 

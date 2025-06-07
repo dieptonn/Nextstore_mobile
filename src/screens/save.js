@@ -7,7 +7,7 @@ import bagEmpty from '../assets/images/emptybag.png';
 const SaveScreen = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.TabName}>saved items</Text>
+            <Text style={styles.TabName}>Saved items</Text>
             <View style={styles.content}>
                 <Image source={bagEmpty} style={styles.img}></Image>
                 <Text style={styles.title}>nothing saved...</Text>

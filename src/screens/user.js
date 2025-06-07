@@ -10,7 +10,7 @@ const UserScreen = () => {
     return (
         <View style={styles.container}>
             <Image source={setting} style={styles.imgSetting}></Image>
-            <Text style={styles.TabName}>my account</Text>
+            <Text style={styles.TabName}>My account</Text>
             <View style={styles.content}>
                 <Image source={userEmpty} style={styles.img}></Image>
                 <Text style={styles.title}>come on in</Text>

@@ -9,7 +9,7 @@ import UserScreen from './src/screens/user';
 import ProductScreen from './src/screens/product';
 import ReviewScreen from './src/screens/reviews';
 import NewReviewScreen from './src/screens/newReview';
-
+import ProductListScreen from './src/screens/ProductListScreen';
 
 
 import Footer from './src/components/footer';
@@ -26,13 +26,9 @@ const App = () => {
   }, []);
 
   const onNavigationStateChange = (currentState) => {
-    // Nếu đang ở màn hình ProductScreen hoặc LoadingScreen, đặt isLoaded thành false
     const currentRoute = currentState.routes[currentState.index].name;
-    if (currentRoute === 'Product') {
-      setIsLoaded(false);
-    } else if (currentRoute === 'Review' || currentRoute === 'NewReview') {
-      setIsLoaded(false);
-    } else if (currentRoute === 'Loading') {
+    // Cập nhật logic để ẩn Footer trên ProductListScreen
+    if (currentRoute === 'Product' || currentRoute === 'ProductList' || currentRoute === 'Review' || currentRoute === 'NewReview' || currentRoute === 'Loading') {
       setIsLoaded(false);
     } else {
       setIsLoaded(true);
@@ -50,6 +46,7 @@ const App = () => {
         <Stack.Screen name="Product" component={ProductScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Review" component={ReviewScreen} options={{ headerShown: false }} />
         <Stack.Screen name="NewReview" component={NewReviewScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ProductList" component={ProductListScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
       {isLoaded && <Footer />}
     </NavigationContainer>
